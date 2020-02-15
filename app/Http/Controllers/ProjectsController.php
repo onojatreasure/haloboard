@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Project;
 
+use Illuminate\Support\Facades\Auth;
+
 class ProjectsController extends Controller
 {
     public function index()
@@ -29,8 +31,9 @@ class ProjectsController extends Controller
             'description' => 'required'
         ]);
 
-        //persist data
-        Project::create($attributes);
+
+        auth()->user()->projects()->create($attributes);
+
 
         //redirect
         return redirect('/projects');
