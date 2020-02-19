@@ -1,16 +1,10 @@
-<!DOCTYPE html>
+@extends('layouts.app')
 
-<html>
-
-<head>
-
-    <title></title>
-
-</head>
-
-<body>
-
-    <h1>Haloboard</h1>
+@section('content')
+    <div class="flex items-center mb-3">
+        <a href="/projects/create">New Project</a>
+    </div>
+    
 
     <ul>
         @forelse  ($projects as $project)
@@ -22,8 +16,4 @@
         @endforelse
     </ul>
 
-</body>
-
-</html>
-
-</html>
+@endsection
