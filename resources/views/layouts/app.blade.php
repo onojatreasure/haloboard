@@ -25,8 +25,8 @@
             <div class="container mx-auto">
             <div class="flex justify-between items-center py-2">
                 <h1>
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="/images/logo.svg" alt="haloboard">
+                    <a class="navbar-brand" href="{{ url('/projects') }}">
+                            <img src="/images/logo.svg" alt="Birdboard" class="relative" style="top: 2px">
                     </a>
                 </h1>
                     
@@ -53,8 +53,8 @@
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
+                                           onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
 
@@ -70,7 +70,7 @@
             </div>
         </nav>
 
-        <main class="container mx-auto py-4">
+        <main class="container mx-auto py-4 section">
             @yield('content')
         </main>
     </div>
