@@ -1,7 +1,7 @@
 @extends ('layouts.app')
 
 @section('content')
-    <header class="flex items-center mb-3 py-4">
+    <header class="flex items-center mb-3 pb-4">
         <div class="flex justify-between items-end w-full">
             <p class="text-grey text-sm font-normal">
                 <a href="/projects" class="text-grey text-sm font-normal no-underline hover:underline">My Projects</a>
@@ -46,17 +46,21 @@
                     <h2 class="text-lg text-grey font-normal mb-3">General Notes</h2>
 
                     {{-- general notes --}}
-                    <form action="{{ $project->path() }}" method="POST">
+                    <form method="POST" action="{{ $project->path() }}">
                         @csrf
                         @method('PATCH')
 
-                        <textarea class="card w-full mb-3" 
+                        <textarea
                             name="notes"
-                            style="min-height: 200px" 
-                            placeholder="Anything special you want to make a note of?">{{ $project->notes }}
-                        </textarea>
-                        <button class="button" type="submit" class="submit">Save</button>
+                            class="card w-full mb-4"
+                            style="min-height: 200px"
+                            placeholder="Anything special that you want to make a note of?"
+                        >{{ $project->notes }}</textarea>
+
+                        <button type="submit" class="button">Save</button>
                     </form>
+
+                    @include ('errors')
                 </div>
             </div>
 
