@@ -8,58 +8,56 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
 
+    use RecordsActivity;
     // Stops mass assign error
+    /**
+     * Attributes to guard against mass assignment.
+     *
+     * @var array
+     */
     protected $guarded = [];
 
-    public $old = [];
-
-    // Method that when called returns the correct url path for a single project using its ID
+    /**
+     *  The path to the project.
+     *
+     * @return string
+     */
     public function path()
     {
         return "/projects/{$this->id}";
     }
 
+    /**
+     * The owner of the project.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function owner()
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * The tasks associated with the project.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function tasks()
     {
         return $this->hasMany(Task::class);
     }
 
+    /**
+     * Add a task to the project.
+     *
+     * @param  string $body
+     * @return \Illuminate\Database\Eloquent\Model
+     */
     public function addTask($body)
     {
-        $task = $this->tasks()->create(compact('body'));
-
-        return $task;
+        return $this->tasks()->create(compact('body'));
     }
 
-    public function activity()
-    {
-        return $this->hasMany(Activity::class)->latest();
-    }
-
-    public function recordActivity($description)
-    {
-        $this->activity()->create([
-            'description' => $description,
-            'changes' => $this->activityChanges($description)
-        ]);
-        
-    }
-
-    public function activityChanges($description) 
-    {
-        if ($description == 'updated') {
-            return [
-                "before" => Arr::Except(array_diff($this->old, $this->getAttributes()), 'updated_at'),
-                "after" => Arr::Except($this->getChanges(), 'updated_at')
-            ];
-        }
-        
-    }
 }
 
 ?>
