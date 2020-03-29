@@ -49,6 +49,17 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
+    function a_user_can_see_all_projects_they_have_benn_invited_to_on_their_dashboard()
+    {
+        $user = $this->signIn();
+
+        $project = tap(ProjectFactory::create())->invite($user);
+
+        $this->get('/projects')
+            ->assertSee($project->title);
+    }
+    
+    /** @test */
     function unauthorized_users_cannot_delete_projects()
     {
         $project = ProjectFactory::create();
