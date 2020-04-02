@@ -74,20 +74,41 @@
   @apply .px-4;
 }
 
+.page {
+  @apply .bg-page ;
+}
+
 .button {
 
   // @apply allows use of styles from other css classes!
-  @apply .bg-blue .text-white .no-underline .rounded-lg .text-sm .py-2 .px-5;
+  @apply .bg-button .text-white .no-underline .rounded-lg .text-sm .py-2 .px-5;
 
   box-shadow: 0 2px 7px 0 #b0eaff;  
 
 }
 
 .card {
-  @apply .bg-white .rounded-lg .shadow .p-5;
+  @apply .bg-card .rounded-lg .shadow .p-5;
+  color: var(--text-default-color);
 }
 
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.theme-light {
+  --page-background-color: #F5F6F9;
+  --card-background-color: white;
+  --button-background-color: #47cdff;
+  --header-background-color: white;
+  --text-default-color: black;
+}
+
+.theme-dark {
+  --page-background-color: #17181e;
+  --card-background-color: #1F2027;
+  --button-background-color: #59B6F9;
+  --header-background-color: #1F2027;
+  --text-default-color: #fff;
 }
