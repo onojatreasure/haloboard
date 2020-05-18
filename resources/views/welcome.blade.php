@@ -4,7 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Haloboard</title>
+
+        <!-- Scripts -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.0/lottie.js'></script>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -45,7 +48,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 50px;
             }
 
             .links > a {
@@ -59,7 +62,7 @@
             }
 
             .m-b-md {
-                margin-bottom: 30px;
+                margin-bottom: 40px;
             }
         </style>
     </head>
@@ -68,33 +71,45 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/projects') }}" class="text-right">Projects</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}" class="text-right">Login</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}" class="text-right">Register</a>
                         @endif
                     @endauth
                 </div>
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                <div class="title text-sm-left">
+                    HALOBOARD
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="bodymovin-wrapper">
+                    <div class="bodymovin">
+                    
+                    </div>
                 </div>
+                
             </div>
         </div>
+
+        <script>
+            var loader = document.getElementsByClassName("bodymovin");
+            function loadBMAnimation(loader) {
+            var animation = bodymovin.loadAnimation({
+            container: loader,
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            path: "https://gist.githubusercontent.com/onojatreasure/b0dc35ce2d3feb99bee097a87ad15231/raw/bf24b72bce50d79f3479d52a8a3643ce59dee691/animation.json"
+            });
+            }
+            for (var i = 0; i < loader.length; i++) {
+            loadBMAnimation(loader[i]);
+            }
+        </script>
     </body>
 </html>
