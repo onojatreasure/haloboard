@@ -31,6 +31,7 @@
                 align-items: center;
                 display: flex;
                 justify-content: center;
+                height: 80vh;
             }
 
             .position-ref {
@@ -45,10 +46,14 @@
 
             .content {
                 text-align: center;
+                margin: 20px;
+                width: 70vh;
+                height: 400px;
             }
 
             .title {
                 font-size: 50px;
+                margin: 20px;
             }
 
             .links > a {
@@ -63,6 +68,11 @@
 
             .m-b-md {
                 margin-bottom: 40px;
+            }
+
+            .bodymovin-wrapper {
+                padding: 20px;
+                width: 200px;
             }
         </style>
     </head>
@@ -83,11 +93,11 @@
             @endif
 
             <div class="content">
-                <div class="title text-sm-left">
+                <div class="title">
                     HALOBOARD
                 </div>
 
-                <div class="bodymovin-wrapper">
+                <div class="bodymovin-wrapper" style="padding-left: 50px; height: 200px; width: 500px;">
                     <div class="bodymovin">
                     
                     </div>
